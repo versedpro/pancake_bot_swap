@@ -1,9 +1,9 @@
 # pancakeswapBot
 python script to buy token from pancakeswap
 
-swap BNB for token you want to buy
+Let you swap BNB for token you want to buy
 
-Change your privatekey!!!
-
-change private_key="your private key"
-
+## sample configs
+publicKeys = ['0xa3...', '0x69...']
+privateKeys = ['xxx', 'yyy']
+amountsBNB = ['0.001', '0.002']
