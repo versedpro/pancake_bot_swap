@@ -1,9 +1,9 @@
 # pancakeswapBot
 python script to buy token from pancakeswap
 
+swap BNB for token you want to buy
+
 Change your privatekey!!!
 
-on line 58 (signed_txn = web3.eth.account.sign_transaction(pancakeswap2_txn, private_key=config.private))
-
-change private_key=" to your private key"
+change private_key="your private key"
 
