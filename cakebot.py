@@ -8,7 +8,7 @@ web3 = Web3(Web3.HTTPProvider(bsc))
 
 print(web3.isConnected())
 
-#pancakeswap router
+# pancakeswap router
 # panRouterContractAddress = '0x10ED43C718714eb63d5aA57B78B54704E256024E'     # mainnet
 panRouterContractAddress = '0xD99D1c33F9fC3444f8101754aBC46c52416550D1'     # testnet
 
@@ -23,6 +23,10 @@ tokenToBuy = web3.toChecksumAddress(input("Enter TokenAddress: "))      # input 
 # Setup the PancakeSwap contract
 contract = web3.eth.contract(address=panRouterContractAddress, abi=panabi)
 
+buy desired token for amount of BNB of account(sender)
+
+sender_address: public key of account(sender) - account address
+sender_private: private key of account(sender)
 def buyToken(sender_address, sender_private, sender_amount, tokenToBuy, contract):
     balance = web3.eth.get_balance(sender_address)
     humanReadable = web3.fromWei(balance, 'ether')
@@ -50,7 +54,6 @@ def buyToken(sender_address, sender_private, sender_amount, tokenToBuy, contract
     # print(web3.toHex(tx_token))
     return web3.toHex(tx_token)
  
-# sender_address = '0xa3C4fFD5Fb5f9F4c1DA865EF2bD2B6EC65B6c235'
 sender_addresses = config.publicKeys
 sender_privates = config.privateKeys
 sender_amounts = config.amountsBNB
