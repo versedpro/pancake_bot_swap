@@ -28,13 +28,13 @@ contract = web3.eth.contract(address=panRouterContractAddress, abi=panabi)
 # @sender_address: public key of account(sender) - account address
 # @sender_private: private key of account(sender)
 # @sender_amount:  amount of BNB you want to swap
-# @tokenToBuy:     token address you want to buy
+# @tokenToBuy:     token address you want to buy. This address is what you input at first while executing the script.
 # @contract:       Pancake Router contract for swap functionality
 def buyToken(sender_address, sender_private, sender_amount, tokenToBuy, contract):
     balance = web3.eth.get_balance(sender_address)
     humanReadable = web3.fromWei(balance, 'ether')
 
-    # spend = web3.toChecksumAddress("0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c")  #wbnb contract
+    # spend = web3.toChecksumAddress("0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c")  #WBNB contract on mainnet
     spend = web3.toChecksumAddress('0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd')        # WBNB on testnet
 
     nonce = web3.eth.get_transaction_count(sender_address)
