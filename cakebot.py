@@ -23,10 +23,13 @@ tokenToBuy = web3.toChecksumAddress(input("Enter TokenAddress: "))      # input 
 # Setup the PancakeSwap contract
 contract = web3.eth.contract(address=panRouterContractAddress, abi=panabi)
 
-buy desired token for amount of BNB of account(sender)
-
-sender_address: public key of account(sender) - account address
-sender_private: private key of account(sender)
+# buy desired token for amount of BNB of account(sender)
+# 
+# @sender_address: public key of account(sender) - account address
+# @sender_private: private key of account(sender)
+# @sender_amount:  amount of BNB you want to swap
+# @tokenToBuy:     token address you want to buy
+# @contract:       Pancake Router contract for swap functionality
 def buyToken(sender_address, sender_private, sender_amount, tokenToBuy, contract):
     balance = web3.eth.get_balance(sender_address)
     humanReadable = web3.fromWei(balance, 'ether')
@@ -53,11 +56,13 @@ def buyToken(sender_address, sender_private, sender_amount, tokenToBuy, contract
     tx_token = web3.eth.send_raw_transaction(signed_txn.rawTransaction)
     # print(web3.toHex(tx_token))
     return web3.toHex(tx_token)
- 
+
+# Variables from config file
 sender_addresses = config.publicKeys
 sender_privates = config.privateKeys
 sender_amounts = config.amountsBNB
 
+# Variable to store successed transaction hashes
 tx_hashes = []
 
 for i in range(len(sender_addresses)):
